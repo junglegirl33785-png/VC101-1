@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeakQuest 巔峰探索 - 玉山主峰 3952m 挑戰之旅</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Config for Theme Customization -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50: '#f2f7f4',
+                            100: '#e1ede7',
+                            600: '#2d5a27',
+                            700: '#244820',
+                            800: '#1c3819',
+                            900: '#142712',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons for premium visual feeling -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="mountain" class="w-8 h-8 text-forest-600"></i>
+                <span class="text-xl font-black text-slate-900 tracking-wider">PeakQuest</span>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium">
+                <a href="#itinerary" class="text-slate-600 hover:text-forest-600 transition-colors">行程規劃</a>
+                <a href="#features" class="text-slate-600 hover:text-forest-600 transition-colors">行程特色</a>
+                <a href="#gear" class="text-slate-600 hover:text-forest-600 transition-colors">裝備指南</a>
+                <a href="#register" class="bg-forest-600 text-white px-5 py-2.5 rounded-full hover:bg-forest-700 transition-all shadow-md hover:shadow-lg">立即報名</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden p-2 text-slate-600 focus:outline-none" aria-label="Toggle Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-3 shadow-inner">
+            <a href="#itinerary" class="block text-slate-600 py-2 font-medium" onclick="toggleMenu()">行程規劃</a>
+            <a href="#features" class="block text-slate-600 py-2 font-medium" onclick="toggleMenu()">行程特色</a>
+            <a href="#gear" class="block text-slate-600 py-2 font-medium" onclick="toggleMenu()">裝備指南</a>
+            <a href="#register" class="block bg-forest-600 text-white text-center py-3 rounded-xl font-medium shadow-sm" onclick="toggleMenu()">立即報名</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80" 
+                 alt="玉山壯麗山景" 
+                 class="w-full h-full object-cover"
+                 onerror="this.src='https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80'">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-900/50 to-slate-50"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center text-white mt-12 md:mt-0">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-forest-600/30 border border-forest-500/30 backdrop-blur-md text-sm font-semibold tracking-wider text-emerald-200 mb-6">
+                <i data-lucide="compass" class="w-4 h-4 animate-spin-slow"></i> 台灣第一高峰 3,952 公尺挑戰
+            </span>
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                一生必去的一場修行<br class="hidden md:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-100">探尋東北亞之巔</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                與專業高山嚮導一同前進，穿梭於原始針葉林與高山杜鵑之間，在排雲山莊觀賞繁星，並於峰頂迎接第一道璀璨的金色曙光。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#register" class="w-full sm:w-auto bg-forest-600 hover:bg-forest-700 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-center flex items-center justify-center gap-2">
+                    探索行程與報名 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#itinerary" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white font-bold px-8 py-4 rounded-full transition-all duration-300 text-center">
+                    了解行程大綱
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/50">
+            <span class="text-xs uppercase tracking-widest font-semibold">往下滾動</span>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
+                <div class="w-1.5 h-3 bg-white/70 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section id="itinerary" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">經典二日行程规划</h2>
+            <div class="h-1.5 w-16 bg-forest-600 mx-auto mt-4 rounded-full"></div>
+            <p class="text-slate-600 mt-4 leading-relaxed text-base">
+                我們提供節奏溫和、高度安全性的登山路徑規劃。以下為推薦的兩天一夜標準挑戰行程。
+            </p>
+        </div>
+
+        <!-- Timeline Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            
+            <!-- Day 1 Card -->
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 transition-all hover:shadow-2xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551632811-561730d1e4a6?auto=format&fit=crop&w=800&q=80" 
+                         alt="步道探險" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                         onerror="this.src='https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=800&q=80'">
+                    <span class="absolute top-6 left-6 bg-forest-600 text-white font-black text-sm tracking-wider px-4 py-2 rounded-xl uppercase shadow-md">
+                        第一天 DAY 1
+                    </span>
+                    <div class="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-900/80 to-transparent p-6 flex items-end">
+                        <h3 class="text-xl font-bold text-white">啟程．深入迷霧之森</h3>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-12 h-12 rounded-2xl bg-forest-50 flex items-center justify-center text-forest-600 font-extrabold">07:00</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">嘉義高鐵站集合出發</h4>
+                                <p class="text-sm text-slate-500 mt-1">搭乘專車前往塔塔加登山口，沿途欣賞阿里山山脈群峰之美。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-12 h-12 rounded-2xl bg-forest-50 flex items-center justify-center text-forest-600 font-extrabold">09:30</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">塔塔加登山口 (海拔 2,610m) 啟程</h4>
+                                <p class="text-sm text-slate-500 mt-1">整備熱身並進行無痕山林（LNT）宣導，踏入神聖的高山步道。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-12 h-12 rounded-2xl bg-forest-50 flex items-center justify-center text-forest-600 font-extrabold">12:30</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">大峭壁 (海拔 3,173m) 休息與午餐</h4>
+                                <p class="text-sm text-slate-500 mt-1">欣賞天然地理奇觀，補充行動糧，準備面對下午的緩升爬坡。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-12 h-12 rounded-2xl bg-forest-50 flex items-center justify-center text-forest-600 font-extrabold">15:30</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">抵達排雲山莊 (Paiyun Lodge, 3,402m)</h4>
+                                <p class="text-sm text-slate-500 mt-1">分配床位、高度適應。享用山莊準備的熱騰騰精緻晚餐，早早入眠蓄積能量。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Day 2 Card -->
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 transition-all hover:shadow-2xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" 
+                         alt="山頂日出" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                         onerror="this.src='https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=800&q=80'">
+                    <span class="absolute top-6 left-6 bg-emerald-600 text-white font-black text-sm tracking-wider px-4 py-2 rounded-xl uppercase shadow-md">
+                        第二天 DAY 2
+                    </span>
+                    <div class="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-900/80 to-transparent p-6 flex items-end">
+                        <h3 class="text-xl font-bold text-white">攻頂．擁抱萬丈光芒</h3>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-12 h-12 rounded-2xl bg-forest-50 flex items-center justify-center text-forest-600 font-extrabold">02:30</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">晨喚與熱早餐補充</h4>
+                                <p class="text-sm text-slate-500 mt-1">在黑暗中戴上頭燈，享用熱食，整理輕裝（重裝留置山莊）。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-12 h-12 rounded-2xl bg-forest-50 flex items-center justify-center text-forest-600 font-extrabold">03:30</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">排雲山莊出發攻頂</h4>
+                                <p class="text-sm text-slate-500 mt-1">經風口、碎石坡、鐵鍊區，頂著寒風專注前行，感受夜行氛圍。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-12 h-12 rounded-2xl bg-forest-50 flex items-center justify-center text-forest-600 font-extrabold">06:00</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">登頂玉山主峰 (3,952m) 迎日出</h4>
+                                <p class="text-sm text-slate-500 mt-1">站在台灣最高點，目睹雲海翻騰、朝陽躍升，並與經典石碑合影留念！</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-12 h-12 rounded-2xl bg-forest-50 flex items-center justify-center text-forest-600 font-extrabold">13:30</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">安全返抵塔塔加登山口</h4>
+                                <p class="text-sm text-slate-500 mt-1">下山經排雲山莊稍作休息，隨後平安返回登山口。專車接送返回嘉義高鐵站。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="bg-slate-950 text-white py-24 relative overflow-hidden">
+        <!-- Background accents -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-forest-700/10 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-700/10 rounded-full filter blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">為什麼選擇 PeakQuest？</h2>
+                <div class="h-1.5 w-16 bg-forest-600 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-400 mt-4 leading-relaxed">
+                    在嚴酷的高海拔環境下，安全與品質是我們對您不變的承諾。
+                </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-forest-600/20 text-forest-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1:5 黃金高規嚮導比</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        派遣具備國家證照與高級急救（WEMT）證書的職業嚮導，精準掌握全隊體能狀況與高山症反應。
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-forest-600/20 text-forest-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="utensils" class="w-8 h-8 text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">排雲山莊精緻炊煮餐食</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        揮別簡陋的高山伙食，提供豐富溫暖、營養均衡的菜餚與熱茶，為挑戰極限的您補充足夠熱量。
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-forest-600/20 text-forest-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="leaflet" class="w-8 h-8 text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">貫徹無痕山林精神</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        帶領學員實踐無痕山林（Leave No Trace, LNT），並舉辦高山生態講座，守護這片土地最初的純淨。
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gear Section -->
+    <section id="gear" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">玉山健行裝備指南</h2>
+            <div class="h-1.5 w-16 bg-forest-600 mx-auto mt-4 rounded-full"></div>
+            <p class="text-slate-600 mt-4 leading-relaxed">
+                登山裝備是您的安全防線。請依循高海拔「分層穿衣法」及以下互動清單檢視您準備的物品。
+            </p>
+        </div>
+
+        <!-- Gear Grid with interactive Checklist -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Intro / Info Box -->
+            <div class="lg:col-span-5 bg-gradient-to-br from-forest-700 to-forest-900 rounded-3xl p-8 text-white shadow-xl">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                    <i data-lucide="info" class="w-6 h-6 text-emerald-300"></i> 什麼是分層穿衣法？
+                </h3>
+                <p class="text-slate-200 text-sm leading-relaxed mb-6">
+                    在海拔 3,000 公尺以上的高山，氣溫可在一小時內驟降。分層穿衣法（Layering System）的核心在於藉由調整衣物，維持身體的核心溫度：
+                </p>
+                <div class="space-y-4">
+                    <div class="flex gap-3 items-start">
+                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-emerald-300 font-bold text-xs flex-shrink-0 mt-0.5">1</div>
+                        <div>
+                            <h4 class="font-bold text-sm">內層（排汗層 Base Layer）</h4>
+                            <p class="text-xs text-slate-300 mt-1">迅速排出汗水，防止在高強度爬升停止時因身體潮濕而失溫。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-emerald-300 font-bold text-xs flex-shrink-0 mt-0.5">2</div>
+                        <div>
+                            <h4 class="font-bold text-sm">中層（保暖層 Mid Layer）</h4>
+                            <p class="text-xs text-slate-300 mt-1">如羽絨或刷毛衣物，留住體溫，阻絕外界寒冷空氣侵襲。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-emerald-300 font-bold text-xs flex-shrink-0 mt-0.5">3</div>
+                        <div>
+                            <h4 class="font-bold text-sm">外層（阻絕層 Outer Shell）</h4>
+                            <p class="text-xs text-slate-300 mt-1">防水透氣材質（如 GORE-TEX），用以抵禦強風、寒雨或落雪。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Checklist -->
+            <div class="lg:col-span-7 bg-white rounded-3xl shadow-lg border border-slate-100 p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-slate-900">個人裝備自主檢查</h3>
+                    <button onclick="resetChecklist()" class="text-xs font-semibold text-forest-600 hover:text-forest-700 flex items-center gap-1">
+                        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> 重設
+                    </button>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Category 1 -->
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">服飾鞋襪</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer select-none">
+                                <input type="checkbox" class="gear-checkbox w-5 h-5 rounded text-forest-600 focus:ring-forest-500 border-slate-300">
+                                <span class="text-sm text-slate-700">排汗衣、褲 (非棉質)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer select-none">
+                                <input type="checkbox" class="gear-checkbox w-5 h-5 rounded text-forest-600 focus:ring-forest-500 border-slate-300">
+                                <span class="text-sm text-slate-700">中層保暖羽絨衣 / 刷毛</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer select-none">
+                                <input type="checkbox" class="gear-checkbox w-5 h-5 rounded text-forest-600 focus:ring-forest-500 border-slate-300">
+                                <span class="text-sm text-slate-700">防水防風外套、雨褲</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer select-none">
+                                <input type="checkbox" class="gear-checkbox w-5 h-5 rounded text-forest-600 focus:ring-forest-500 border-slate-300">
+                                <span class="text-sm text-slate-700">中高筒登山鞋 & 羊毛襪</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Category 2 -->
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">必備重裝與照明</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer select-none">
+                                <input type="checkbox" class="gear-checkbox w-5 h-5 rounded text-forest-600 focus:ring-forest-500 border-slate-300">
+                                <span class="text-sm text-slate-700">雙肩中/大背包 (含雨罩)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer select-none">
+                                <input type="checkbox" class="gear-checkbox w-5 h-5 rounded text-forest-600 focus:ring-forest-500 border-slate-300">
+                                <span class="text-sm text-slate-700">夜間行動頭燈 (含備用電池)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer select-none">
+                                <input type="checkbox" class="gear-checkbox w-5 h-5 rounded text-forest-600 focus:ring-forest-500 border-slate-300">
+                                <span class="text-sm text-slate-700">兩節式高強度登山杖</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer select-none">
+                                <input type="checkbox" class="gear-checkbox w-5 h-5 rounded text-forest-600 focus:ring-forest-500 border-slate-300">
+                                <span class="text-sm text-slate-700">耐熱水壺或保溫瓶</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="pt-4 border-t border-slate-100">
+                        <div class="flex justify-between items-center text-sm font-bold text-slate-600 mb-2">
+                            <span>裝備準備率</span>
+                            <span id="gear-percent">0%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                            <div id="gear-progress-bar" class="bg-forest-600 h-full w-0 transition-all duration-300"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="bg-slate-100 py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12">
+                
+                <!-- Decoration/Info block -->
+                <div class="md:col-span-4 bg-forest-800 text-white p-8 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute inset-0 z-0 opacity-10">
+                        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path d="M0,100 L100,0 L100,100 Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-black mb-4 tracking-wide">立即踏出第一步</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            攀登玉山需提前 30 天進行入山與排雲山莊床位抽籤申請。立即提交您的意願，我們將有專人與您聯繫。
+                        </p>
+                    </div>
+                    <div class="mt-8 md:mt-0 relative z-10 space-y-4">
+                        <div class="flex items-center gap-3 text-sm">
+                            <i data-lucide="phone" class="w-5 h-5 text-emerald-400"></i>
+                            <span>(02) 2345-6789</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <i data-lucide="mail" class="w-5 h-5 text-emerald-400"></i>
+                            <span>service@peakquest.tw</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="registration-form" class="md:col-span-8 p-8 sm:p-10 space-y-6" onsubmit="handleFormSubmit(event)">
+                    <h3 class="text-2xl font-extrabold text-slate-900">填寫報名意願表</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">真實姓名</label>
+                            <input type="text" id="user-name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all text-sm" placeholder="王大明">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">身分證字號 / 護照號碼 (辦理入山使用)</label>
+                            <input type="text" id="user-id" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all text-sm" placeholder="A123456789">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">電子郵件信箱</label>
+                            <input type="email" id="user-email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all text-sm" placeholder="hiking@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">聯絡電話</label>
+                            <input type="tel" id="user-phone" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all text-sm" placeholder="0912-345-678">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">預計挑戰月份</label>
+                        <select id="hiking-month" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all text-sm bg-white">
+                            <option value="4">4月 (高山春暖杜鵑開)</option>
+                            <option value="5">5月 (初夏綠意)</option>
+                            <option value="10">10月 (秋高氣爽最適宜)</option>
+                            <option value="11">11月 (深秋楓紅)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">高山登山經驗描述</label>
+                        <textarea id="experience" rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all text-sm" placeholder="例如：曾登過合歡群峰、爬過郊山等，或者無經驗。"></textarea>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" id="privacy-agree" required class="w-5 h-5 rounded text-forest-600 focus:ring-forest-500 border-slate-300 mt-0.5">
+                        <label for="privacy-agree" class="text-xs text-slate-500 leading-relaxed">
+                            我同意此網站僅為模擬專案，不對外收取真實報名費用。填寫之資料將獲得妥善隱私保管，僅作為前端表單送出功能展示。
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full bg-forest-600 hover:bg-forest-700 text-white font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-5 h-5"></i> 送出報名意願表
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex justify-center items-center gap-2 text-white mb-4">
+                <i data-lucide="mountain" class="w-6 h-6 text-emerald-400"></i>
+                <span class="text-lg font-black tracking-wider">PeakQuest</span>
+            </div>
+            <p class="text-sm mb-6 max-w-md mx-auto">
+                帶領熱愛自然的人們，安全、永續地探索世界屋脊。不留下一絲足跡，只帶走一生的壯麗回憶。
+            </p>
+            <div class="text-xs text-slate-600 space-y-1">
+                <p>&copy; 2026 PeakQuest 巔峰探索. All rights reserved.</p>
+                <p>圖片來源：Unsplash / 本網站僅供前端開發技術展示</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Modal for Form Submission Success (Replaces native alert) -->
+    <div id="success-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl border border-slate-100 text-center transform scale-95 transition-transform duration-300" id="modal-content">
+            <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check-circle" class="w-10 h-10"></i>
+            </div>
+            <h4 class="text-2xl font-extrabold text-slate-900 mb-2">報名意願送出成功！</h4>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                太棒了，<span id="registered-name" class="font-bold text-forest-600">登山勇士</span>！我們已經收到您的預約。PeakQuest 的專業高山小秘書將在 24 小時內寄送「行前自主訓練計劃」與詳細合約至您的電子郵件信箱。
+            </p>
+            <button onclick="closeModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition-all shadow">
+                太棒了，我準備好了！
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Initialize Lucide icons on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+            setupGearChecklist();
+        });
+
+        // Mobile Menu toggle function
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Toggle button binding
+        document.getElementById('menu-btn').addEventListener('click', toggleMenu);
+
+        // Gear checklist logic
+        const checkboxes = document.querySelectorAll('.gear-checkbox');
+        const progressBar = document.getElementById('gear-progress-bar');
+        const percentLabel = document.getElementById('gear-percent');
+
+        function setupGearChecklist() {
+            checkboxes.forEach(box => {
+                box.addEventListener('change', updateProgressBar);
+            });
+            updateProgressBar();
+        }
+
+        function updateProgressBar() {
+            const total = checkboxes.length;
+            const checked = document.querySelectorAll('.gear-checkbox:checked').length;
+            const percentage = Math.round((checked / total) * 100);
+
+            progressBar.style.width = percentage + '%';
+            percentLabel.textContent = percentage + '%';
+        }
+
+        function resetChecklist() {
+            checkboxes.forEach(box => box.checked = false);
+            updateProgressBar();
+        }
+
+        // Form submission behavior
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Fetch input value
+            const nameInput = document.getElementById('user-name').value;
+            document.getElementById('registered-name').textContent = nameInput;
+
+            // Trigger premium looking custom modal (Never alert!)
+            const modal = document.getElementById('success-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+
+            // Reset form
+            document.getElementById('registration-form').reset();
+            resetChecklist();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('success-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+        }
+    </script>
+</body>
+</html>
